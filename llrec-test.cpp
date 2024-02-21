@@ -4,6 +4,12 @@
 #include "llrec.h"
 using namespace std;
 
+struct Odd {
+  bool operator()(int val) {
+    return val % 2; 
+  }
+};
+
 /**
  * Reads integers (separated by whitespace) from a file
  * into a linked list.
@@ -85,9 +91,23 @@ int main(int argc, char* argv[])
     cout << "Original list: ";
     print(head);
 
+    Node* smaller = nullptr; 
+    Node* larger = nullptr; 
+    llpivot(head, smaller, larger, 19); 
+
     // Test out your linked list code
+    cout << "Smaller List: "; 
+    print(smaller); 
 
+    cout << "Larger List: "; 
+    print(larger); 
 
+    // test comparator
+    cout << "Original list: ";
+    print(smaller);
+    smaller = llfilter(smaller, Odd()); 
+    cout << "Odd List After Filter: "; 
+    print(smaller); 
 
     
     return 0;

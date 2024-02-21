@@ -3,6 +3,7 @@
 #ifndef NULL
 #define NULL 0
 #endif
+#include <iostream>
 
 /**
  * Node struct for both problems
@@ -48,7 +49,7 @@ struct Node
  *
  */
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot);
-
+void llpivotHelper(Node *&head, Node *&smaller, Node *&larger, int pivot);
 /**
  * Given a linked list pointed to by head, removes (filters out) nodes
  * whose value does not meet the criteria given by the predicate
@@ -80,10 +81,18 @@ Node* llfilter(Node* head, Comp pred);
 template <typename Comp>
 Node* llfilter(Node* head, Comp pred)
 {
-    //*********************************************
-    // Provide your implementation below
-    //*********************************************
+  if(head == nullptr) return head; 
 
+  // remove values that do not meet predicate criteria
+  int val = head->val; 
+  if(!pred(val)) {
+    Node* nextItem = head->next; 
+    delete head;  
+    return llfilter(nextItem, pred);  
+  }
+  // head value meets correct criteria
+  head->next = llfilter(head->next, pred);  
+  return head; 
 
 }
 
