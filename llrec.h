@@ -3,7 +3,6 @@
 #ifndef NULL
 #define NULL 0
 #endif
-#include <iostream>
 
 /**
  * Node struct for both problems

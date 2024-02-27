@@ -100,8 +100,8 @@ Event* NotGate::update(uint64_t current_time)
 {
     
   char state = 'X';
-  if(m_inputs[0]->getState() == 0) state = '1'; 
-  else if(m_inputs[0]->getState() == 1) state = '0';
+  if(m_inputs[0]->getState() == '0') state = '1'; 
+  else if(m_inputs[0]->getState() == '1') state = '0';
 
   Event* e = nullptr;
 

@@ -9,8 +9,12 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot) {
   larger = new Node(0, nullptr); 
   llpivotHelper(head, smaller, larger, pivot); 
   head = nullptr;
+  Node* tempS = smaller; 
+  Node* tempL = larger; 
   smaller = smaller->next; 
   larger = larger->next;  
+  delete tempS; 
+  delete tempL; 
 }
 
 void llpivotHelper(Node *&head, Node *&smaller, Node *&larger, int pivot) {
