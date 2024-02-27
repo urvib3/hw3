@@ -85,7 +85,7 @@ Node* llfilter(Node* head, Comp pred)
 
   // remove values that do not meet predicate criteria
   int val = head->val; 
-  if(!pred(val)) {
+  if(pred(val)) {
     Node* nextItem = head->next; 
     delete head;  
     return llfilter(nextItem, pred);  
